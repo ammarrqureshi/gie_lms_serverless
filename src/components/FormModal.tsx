@@ -14,7 +14,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "react-toastify";
 import { FormContainerProps } from "./FormContainer";
-
+import { LuPlus } from "react-icons/lu";
 const deleteActionMap = {
   subject: deleteSubject,
   class: deleteClass,
@@ -160,7 +160,7 @@ const FormModal = ({
         className={`${size} flex items-center justify-between gap-2 rounded-full ${bgColor}`}
         onClick={() => setOpen(true)}
       >
-        <Image src={`/create.png`} alt="" width={16} height={16} />
+<LuPlus className="w-6  h-6" /> 
 Add {table}
       </button>
  :        <button
