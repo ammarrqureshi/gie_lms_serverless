@@ -6,9 +6,9 @@ services:
     image: postgres
     container_name: postgres_db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: gieschool
-      POSTGRES_DB: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - '5432:5432'
     volumes:
@@ -16,11 +16,11 @@ services:
     
   app:
     build: .
-    container_name: nextjs_app
+    container_name: gie_lms_app 
     ports:
       - '3000:3000'
     environment:
-      DATABASE_URL: postgresql://postgres:gieschool@postgres:5432/postgres
+      DATABASE_URL: ${DATABASE_URL}
     depends_on:
       - postgres
 
