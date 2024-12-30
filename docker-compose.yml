@@ -1,13 +1,14 @@
+
 version: '3.8'
 
 services:
-  postgress:
+  postgres:
     image: postgres:15
     container_name: postgres_db
     environment:
-      POSTGRES_USER: giepostgres
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: gieschool
-      POSTGRES_DB: giedb
+      POSTGRES_DB: postgres
     ports:
       - '5432:5432'
     volumes:
@@ -15,13 +16,14 @@ services:
     
   app:
     build: .
-    container_name: gie_lms
+    container_name: nextjs_app
     ports:
       - '3000:3000'
     environment:
-      - DATABASE_URL: postgresql://giepostgres:gieschool@localhost:5432/giedb
+      DATABASE_URL: postgresql://postgres:gieschool@postgres:5432/postgres
     depends_on:
       - postgres
 
 volumes:
   postgres_data:
+
